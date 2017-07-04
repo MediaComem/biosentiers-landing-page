@@ -7,7 +7,38 @@ $(function() {
     maxZoom: 18
   }).addTo(map);
 
-  $.ajax('/api/trails/8c8c2474-4375-4121-95d3-763f381717df/zones').then(displayZones);
+  $.when(
+    $.ajax('/api/trails/8c8c2474-4375-4121-95d3-763f381717df/paths'),
+    $.ajax({
+      url: '/api/trails/8c8c2474-4375-4121-95d3-763f381717df/zones',
+      dataType: 'json'
+    })
+  ).then(displayData);
+
+  function displayData(pathsResult, zonesResult) {
+    return $.when([
+      displayPath(pathsResult[0]),
+      displayZones(zonesResult[0])
+    ]);
+  }
+
+  function displayPath(paths) {
+
+    var path;
+    for (var i = 0; i < paths.length; i++) {
+      if (!path || path.length !== undefined && paths[i].length > path.length) {
+        path = paths[i];
+      }
+    }
+
+    L.geoJSON(recordsToFeatureCollection([ path ]), {
+      style: function(feature) {
+        return {
+          color: '#ff00bb'
+        };
+      }
+    }).addTo(map);
+  }
 
   function displayZones(zones) {
 
@@ -35,16 +66,18 @@ $(function() {
 
     map.fitBounds(bounds);
 
-    var featureCollection = {
+    L.geoJSON(recordsToFeatureCollection(zones)).addTo(map);
+  }
+
+  function recordsToFeatureCollection(records) {
+    return {
       type: 'FeatureCollection',
-      features: zones.map(function(zone) {
+      features: records.map(function(record) {
         return {
           type: 'Feature',
-          geometry: zone.geometry
+          geometry: record.geometry
         };
       })
     };
-
-    L.geoJSON(featureCollection).addTo(map);
   }
 });

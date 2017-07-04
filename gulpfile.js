@@ -97,18 +97,6 @@ gulp.task('dev', ['browserSync', 'compile'], function () {
   gulp.watch('js/**/*.js', browserSync.reload);
 });
 
-// Compiles SCSS files from /scss into /css
-// NOTE: This theme uses LESS by default. To swtich to SCSS you will need to update this gulpfile by changing the 'less' tasks to run 'sass'!
-gulp.task('sass', function () {
-  return gulp.src('scss/agency.scss')
-    .pipe(sass())
-    .pipe(header(banner, { pkg: pkg }))
-    .pipe(gulp.dest('css'))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-});
-
 gulp.task('compile', ['less', 'minify-css', 'minify-js']);
 
 gulp.task('build', ['compile'], function() {
@@ -116,7 +104,7 @@ gulp.task('build', ['compile'], function() {
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('prodServ', function() {
+gulp.task('prod', ['build'], function() {
   browserSync.init({
     server: {
       baseDir: 'dist'
@@ -126,8 +114,6 @@ gulp.task('prodServ', function() {
     ]
   });
 });
-
-gulp.task('prod', ['build', 'prodServ']);
 
 function createProxy() {
 

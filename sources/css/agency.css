@@ -3,6 +3,15 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+#map .leaflet-custom-control a {
+  padding-top: 3px;
+  padding-right: 1px;
+}
+#map .leaflet-custom-control a .glyphicon {
+  color: #000000;
+  font-size: 22px !important;
+  line-height: 22px;
+}
 .navbar-custom {
   background-color: rgba(255, 255, 255, 0.95);
   border: none;

@@ -1,19 +1,61 @@
 $(function() {
-  var map = L.map('map', {
-    scrollWheelZoom: false
-  }).setView([ 46.778626, 6.641014 ], 13);
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18
-  }).addTo(map);
+  var map, trailBounds;
 
-  $.when(
-    $.ajax('/api/trails/8c8c2474-4375-4121-95d3-763f381717df/paths'),
-    $.ajax({
-      url: '/api/trails/8c8c2474-4375-4121-95d3-763f381717df/zones',
-      dataType: 'json'
-    })
-  ).then(displayData);
+  $.when()
+    .then(initMap)
+    .then(loadData)
+    .then(displayData);
+
+  function initMap() {
+    map = L.map('map', {
+      scrollWheelZoom: false
+    }).setView([ 46.778626, 6.641014 ], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18
+    }).addTo(map);
+  }
+
+  function addBackControl() {
+
+    var BackButton = L.Control.extend({
+
+      options: {
+        position: 'topleft'
+      },
+
+      onAdd: function (map) {
+
+        var container = $('<div class="leaflet-bar leaflet-control leaflet-custom-control"></div>');
+        var button = $('<a href="#" title="Retour au sentier" role="button" aria-label="Retour au sentier"></a>').appendTo(container);
+        var icon = $('<span class="glyphicon glyphicon-map-marker"></span>').appendTo(button);
+
+        button.on('click', function(e) {
+          e.preventDefault();
+          map.fitBounds(trailBounds, getFitBoundsOptions({
+            animate: true,
+            duration: 0.5
+          }));
+        });
+
+        return container[0];
+      },
+
+    });
+
+    map.addControl(new BackButton());
+  }
+
+  function loadData() {
+    return $.when(
+      $.ajax('/api/trails/8c8c2474-4375-4121-95d3-763f381717df/paths'),
+      $.ajax({
+        url: '/api/trails/8c8c2474-4375-4121-95d3-763f381717df/zones',
+        dataType: 'json'
+      })
+    );
+  }
 
   function displayData(pathsResult, zonesResult) {
     return $.when([
@@ -62,9 +104,11 @@ $(function() {
 
     var northEast = L.latLng(maxLat, maxLng);
     var southWest = L.latLng(minLat, minLng);
-    var bounds = L.latLngBounds(southWest, northEast);
+    trailBounds = L.latLngBounds(southWest, northEast);
 
-    map.fitBounds(bounds);
+    map.fitBounds(trailBounds, getFitBoundsOptions());
+
+    addBackControl();
 
     L.geoJSON(recordsToFeatureCollection(zones)).addTo(map);
   }
@@ -79,5 +123,11 @@ $(function() {
         };
       })
     };
+  }
+
+  function getFitBoundsOptions(options) {
+    options = options || {};
+    options.padding = options.padding || [ 20, 20 ];
+    return options;
   }
 });

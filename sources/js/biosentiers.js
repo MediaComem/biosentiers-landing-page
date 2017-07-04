@@ -1,10 +1,16 @@
-$(document).ready(function () {
+(function ($) {
+  "use strict";
+
+  console.log('Bonjour');
+  
   var $apropos = $("#apropos");
   var $panels = $("div.panels", $apropos);
   var $images = $("div.images", $apropos);
 
   /* ----- EVENTS ----- */
   $("div.slice").click(selectSlice);
+
+  /* ----- FUNCTION ----- */
 
   /**
    * Unselect the given slice in the "À propos" section.
@@ -43,4 +49,4 @@ $(document).ready(function () {
     }
     $shown.addClass('hidden');
   }
-});
+})(jQuery);

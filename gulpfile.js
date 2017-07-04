@@ -4,8 +4,10 @@ var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var header = require('gulp-header');
 var cleanCSS = require('gulp-clean-css');
+var proxy = require('proxy-middleware');
 var rename = require("gulp-rename");
 var uglify = require('gulp-uglify');
+var url = require('url');
 var pkg = require('./package.json');
 
 // Set the banner content
@@ -79,6 +81,9 @@ gulp.task('browserSync', function () {
     server: {
       baseDir: ''
     },
+    middleware: [
+      createProxy()
+    ]
   });
 });
 
@@ -115,7 +120,18 @@ gulp.task('prodServ', function() {
     server: {
       baseDir: 'dist'
     },
+    middleware: [
+      createProxy()
+    ]
   });
 });
 
 gulp.task('prod', ['build', 'prodServ']);
+
+function createProxy() {
+
+  var proxyOptions = url.parse('https://biosentiers.heig-vd.ch/api');
+  proxyOptions.route = '/api';
+
+  return proxy(proxyOptions);
+}

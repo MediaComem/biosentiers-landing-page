@@ -217,12 +217,6 @@
 #apropos .panels .content p {
   font-size: 1;
 }
-#ecrans .carousel-inner > .item > img {
-  margin: 0 auto;
-}
-#ecrans .carousel-buttons {
-  margin-top: 70px;
-}
 #ecrans .bs-tabs {
   list-style: none;
   padding: 0;
@@ -249,6 +243,26 @@
 }
 #ecrans .bs-tabs li:not(.active) a:hover {
   color: #cfd6d6;
+}
+#ecrans .screen-carousel {
+  height: 750px;
+  width: 475px;
+  background: url(../img/tablet.png) no-repeat center center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#ecrans .screen-carousel .wrapper {
+  width: 349px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#ecrans #screens-carousel {
+  position: relative;
+  left: -1px;
+  top: -3px;
 }
 .flex {
   display: -webkit-box;

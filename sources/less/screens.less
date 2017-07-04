@@ -1,10 +1,4 @@
 #ecrans {
-  .carousel-inner > .item > img {
-    margin: 0 auto;
-  }
-  .carousel-buttons {
-    margin-top: 70px;
-  }
   .bs-tabs {
     list-style: none;
     padding: 0;
@@ -29,5 +23,29 @@
         color: @navlinks-active;
       }
     }
+  }
+  .screen-carousel {
+    height: 750px;
+    width: 475px;
+    background: url(../img/tablet.png) no-repeat center center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .wrapper {
+      width: 349px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  #screens-carousel {
+    position: relative;
+    left: -1px;
+    top: -3px;
+    // top: 94px;
+    // left: 62px;
   }
 }

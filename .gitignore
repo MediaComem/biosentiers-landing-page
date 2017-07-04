@@ -1,0 +1,20 @@
+node_modules/
+sources/
+.vscode/
+._*
+
+### OSX ###
+.AppleDouble
+.LSOverride
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.DS_Store
+
+# Folder config file
+Desktop.ini

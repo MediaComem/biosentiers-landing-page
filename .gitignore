@@ -1,8 +1,11 @@
 node_modules/
 sources/images/
+sources/css/
 .vscode/
 ._*
 dist/
+css/
+js/
 
 ### OSX ###
 .AppleDouble

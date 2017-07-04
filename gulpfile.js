@@ -73,7 +73,7 @@ gulp.task('copy', function () {
 });
 
 // Run everything
-gulp.task('default', ['less', 'minify-css', 'minify-js', 'copy']);
+gulp.task('default', ['compile', 'copy']);
 
 // Configure the browserSync task
 gulp.task('browserSync', function () {
@@ -88,7 +88,7 @@ gulp.task('browserSync', function () {
 });
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css', 'minify-js'], function () {
+gulp.task('dev', ['browserSync', 'compile'], function () {
   gulp.watch('sources/less/*.less', ['less']);
   gulp.watch('sources/css/*.css', ['minify-css']);
   gulp.watch('sources/js/*.js', ['minify-js']);
@@ -109,8 +109,9 @@ gulp.task('sass', function () {
     }));
 });
 
+gulp.task('compile', ['less', 'minify-css', 'minify-js']);
 
-gulp.task('build', function() {
+gulp.task('build', ['compile'], function() {
   return gulp.src(['css/**/*', 'js/**/*', 'img/**/*', 'index.html', 'vendor/**/*'], {base: '.'})
     .pipe(gulp.dest('dist/'));
 });

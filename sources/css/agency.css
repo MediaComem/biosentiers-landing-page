@@ -109,6 +109,30 @@
   line-height: 40px;
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+#header a {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  border-radius: 50px;
+  line-height: 90px;
+  background-color: rgba(255, 255, 255, 0);
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+#header a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+#header a:hover .glyphicon {
+  opacity: 0.8;
+}
+#header a .glyphicon {
+  font-size: 3em;
+  opacity: 0.3;
+  -webkit-transition: opacity 0.1s;
+  -moz-transition: opacity 0.1s;
+  transition: opacity 0.1s;
+}
 @media (max-width: 768px) {
   #header .intro-text {
     padding: 100px 15px 50px 15px;
@@ -217,6 +241,9 @@
 #apropos .panels .content p {
   font-size: 1;
 }
+#map {
+  min-height: 50vh;
+}
 #ecrans .bs-tabs {
   list-style: none;
   padding: 0;
@@ -250,7 +277,7 @@
   background: url(../img/tablet.png) no-repeat center center;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 #ecrans .screen-carousel .wrapper {
@@ -258,11 +285,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  order: 2;
+}
+#ecrans .screen-carousel .prev-screen .glyphicon,
+#ecrans .screen-carousel .next-screen .glyphicon {
+  color: #cfd6d6;
+  -webkit-transition: color 0.2s;
+  -moz-transition: color 0.2s;
+  transition: color 0.2s;
+  font-size: 2em;
+}
+#ecrans .screen-carousel .prev-screen .glyphicon:hover,
+#ecrans .screen-carousel .next-screen .glyphicon:hover {
+  color: #9AA4A4;
+}
+#ecrans .screen-carousel .prev-screen {
+  order: 1;
+}
+#ecrans .screen-carousel .next-screen {
+  order: 3;
 }
 #ecrans #screens-carousel {
   position: relative;
   left: -1px;
   top: -3px;
+}
+#ecrans #screens-carousel .carousel-indicators li {
+  border-color: #00838f;
+}
+#ecrans #screens-carousel .carousel-indicators .active {
+  background-color: #00838f;
 }
 .flex {
   display: -webkit-box;
@@ -455,9 +507,6 @@ fieldset[disabled] .btn-xl.active {
   color: #fed136;
   background-color: white;
 }
-section {
-  height: calc(100vh - 70px);
-}
 .service-heading {
   margin: 15px 0;
   text-transform: none;
@@ -573,7 +622,6 @@ body {
 .glyphicon {
   color: #fff;
   background-color: transparent;
-  font-size: 50px !important;
 }
 #contacts {
   color: white;

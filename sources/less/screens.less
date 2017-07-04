@@ -30,7 +30,7 @@
     background: url(../img/tablet.png) no-repeat center center;
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 
     .wrapper {
@@ -38,6 +38,30 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      order: 2;
+    }
+
+    .prev-screen, .next-screen {
+      
+      .glyphicon {
+        color: @navlinks-active;
+        -webkit-transition: color 0.2s;
+        -moz-transition: color 0.2s;
+        transition: color 0.2s;
+        font-size: 2em;
+
+        &:hover {
+          color: @navlinks-def;
+        }
+      }
+    }
+
+    .prev-screen {
+      order: 1;
+    }
+
+    .next-screen {
+      order: 3;
     }
   }
 
@@ -45,7 +69,14 @@
     position: relative;
     left: -1px;
     top: -3px;
-    // top: 94px;
-    // left: 62px;
+
+    .carousel-indicators {
+      li {
+        border-color: @bs-blue;
+      }
+      .active {
+        background-color: @bs-blue;
+      }
+    }
   }
 }

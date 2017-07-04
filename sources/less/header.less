@@ -18,6 +18,32 @@
       .body-font;
     }
   }
+
+  a {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    border-radius: 50px;
+    line-height: 90px;
+    background-color: rgba(255, 255, 255, 0);
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+
+      .glyphicon {
+        opacity: 0.8;
+      }
+    }
+    .glyphicon {
+      font-size: 3em;
+      opacity: 0.3;      
+      -webkit-transition: opacity 0.1s;
+      -moz-transition: opacity 0.1s;
+      transition: opacity 0.1s;
+    }
+  }
 }
 
 @media(max-width:768px) {

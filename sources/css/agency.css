@@ -53,7 +53,6 @@
 .navbar-custom .nav li a {
   padding-bottom: 37px;
   font-weight: 700;
-  letter-spacing: 1px;
   color: #9AA4A4;
   -webkit-transition: padding 0.3s;
   -moz-transition: padding 0.3s;
@@ -218,6 +217,39 @@ header .intro-text .intro-heading {
 #apropos .panels .content p {
   font-size: 1.2em;
 }
+#ecrans .carousel-inner > .item > img {
+  margin: 0 auto;
+}
+#ecrans .carousel-buttons {
+  margin-top: 70px;
+}
+#ecrans .bs-tabs {
+  list-style: none;
+  text-align: right;
+  font-family: "Quicksand", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 2em;
+  font-weight: bold;
+}
+#ecrans .bs-tabs li {
+  display: inline-block;
+  padding: 25px 0 10px 0;
+  margin: 0 0 15px 30px;
+}
+#ecrans .bs-tabs li.active {
+  border-bottom: 2px solid #9AA4A4;
+}
+#ecrans .bs-tabs li a {
+  color: #9AA4A4;
+}
+#ecrans .bs-tabs li a:hover,
+#ecrans .bs-tabs li a:focus,
+#ecrans .bs-tabs li a:visited,
+#ecrans .bs-tabs li a:active {
+  text-decoration: none;
+}
+#ecrans .bs-tabs li:not(.active) a:hover {
+  color: #cfd6d6;
+}
 .flex {
   display: -webkit-box;
   /* OLD - iOS 6-, Safari 3.1-6, BB7 */
@@ -280,17 +312,6 @@ header .intro-text .intro-heading {
   border-width: medium;
   background-color: Transparent;
   margin-right: 20px;
-}
-#ecrans {
-  margin-top: 0;
-  padding: 0;
-}
-.carousel-inner > .item > img {
-  margin: 0 auto;
-  margin-top: 100px;
-}
-.carousel-buttons {
-  margin-top: 70px;
 }
 body {
   overflow-x: hidden;

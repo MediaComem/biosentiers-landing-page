@@ -64,7 +64,7 @@
   </nav>
 
   <!-- Header -->
-  <header>
+  <section id="header">
     <section id="accueil">
       <div class="container">
         <img src="./img/round_logo_BS_300.png">
@@ -75,7 +75,7 @@
       </div>
       <a class="page-scroll" href="#apropos"><i class="glyphicon glyphicon-menu-down"></i></a>
     </section>
-  </header>
+  </section>
 
   <!-- À Propos -->
   <section id="apropos">
@@ -85,14 +85,14 @@
           <h2><span>1</span>Promenade du sentier</h2>
         </div>
         <div class="content hidden">
-          <p>Suivez le sentier spécialement crée pour vous afin de constater l’explosion de biodiversité le long du parcours.</p>
+          <p>Suivez le sentier spécialement créé pour vous afin de constater l’explosion de biodiversité le long du parcours.</p>
           <p>Le sentier permet ainsi de se rendre de la gare d’Yverdon-les-Bains jusqu’au centre Champ-Pittet, en traversant
             des zones variées en espèces et en paysages.</p>
         </div>
       </div>
       <div class="orange slice">
         <div class="title">
-          <h2><span>2</span> Réalité augumentée</h2>
+          <h2><span>2</span> Réalité augmentée</h2>
         </div>
         <div class="content hidden">
           <p>La réalité augmentée permet l’ajout d’informations supplémentaires directement sur l’écran de l’appareil mobile.</p>
@@ -138,7 +138,9 @@
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane active" id="screens">
+
+        <!-- Screen Tab -->
+        <div class="tab-pane active fade in" id="screens">
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="false">
             <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -180,7 +182,13 @@
             </a>
           </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="video">Vidéo</div>
+
+        <!-- Video Tab -->
+        <div role="tabpanel" class="tab-pane fade" id="video">
+          <div class="screen-carousel">
+            
+          </div>
+        </div>
       </div>
     </div>
   </section>

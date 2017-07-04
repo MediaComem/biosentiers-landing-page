@@ -7,6 +7,7 @@
   -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
   -o-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
+
   .navbar-header {
     padding: 25px 0;
     color: @bs-red;
@@ -14,12 +15,14 @@
     -moz-transition: all 0.3s;
     transition: all 0.3s;
     .heading-font;
+
     .navbar-brand {
       font-size: 2.5em;
       font-weight: bold;
       color: inherit;
       padding: 0;
       line-height: inherit;
+
       img {
         display: inline-block;
         margin-right: 10px;
@@ -28,23 +31,30 @@
       }
     }
   }
+
   .navbar-collapse {
     border-color: fade(white, 2%);
   }
+
   .navbar-toggle {
     background-color: white;
     border-color: white;
-    .heading-font;
     color: @navlinks-def;
     font-size: 15px;
+    .heading-font;
+
     &:hover, &:focus {
       background-color: white;
       color: @navlinks-active;
     }
   }
+
   .nav {
+    font-size: 1.3em;
+
     li {
       padding-top: 25px;
+
       a {
         padding-bottom: 37px;
         font-weight: 700;
@@ -54,11 +64,13 @@
         transition: padding 0.3s;
         background: none !important;
         .heading-font;
+
         &:hover, &:focus {
           color: @navlinks-active;
           outline: none;
         }
       }
+
       &.active  > a {
         color: @bs-red !important;
         // border-bottom: 3px solid @bs-red;
@@ -66,18 +78,24 @@
     }
   }
 }
+
 .navbar-custom.affix {
+
   .navbar-header {
     padding: 10px 0;
   }
+
   .nav li {
     padding-top: 10px;
+
     a {
       padding-bottom: 22px;
     }
   }
+
   .navbar-brand {
     font-size: 2em;
+
     img {
       height: 90%;
       position: static;

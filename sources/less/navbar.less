@@ -21,6 +21,7 @@
       font-weight: bold;
       color: inherit;
       padding: 0;
+      padding-left: 15px;
       line-height: inherit;
 
       img {
@@ -32,6 +33,12 @@
 
       &:hover {
         opacity: 0.8;
+      }
+
+      @media(min-width: 995px) {
+        span {
+          visibility: hidden;
+        }
       }
     }
   }

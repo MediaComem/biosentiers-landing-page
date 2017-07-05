@@ -1,6 +1,7 @@
 $(function() {
 
-  var map, trailBounds;
+  var trailId = '8c8c2474-4375-4121-95d3-763f381717df';
+  var map, selectedZone, trailBounds;
 
   $.when()
     .then(initMap)
@@ -49,9 +50,9 @@ $(function() {
 
   function loadData() {
     return $.when(
-      $.ajax('/api/trails/8c8c2474-4375-4121-95d3-763f381717df/paths'),
+      $.ajax('/api/trails/' + trailId + '/paths'),
       $.ajax({
-        url: '/api/trails/8c8c2474-4375-4121-95d3-763f381717df/zones',
+        url: '/api/trails/' + trailId + '/zones',
         dataType: 'json'
       })
     );
@@ -127,15 +128,23 @@ $(function() {
     }
   }
 
-  function getZoneStyle(state) {
+  function getZoneStyle(feature, state) {
 
     var color = '#3388ff';
     var fillOpacity = 0.2;
-    switch (state) {
-      case 'highlighted':
-        color = '#0000ff';
-        fillOpacity = 0.4;
-        break;
+
+    var highlighted = feature && feature.properties.highlighted;
+    var selected = selectedZone && feature === selectedZone;
+
+    if (selected && highlighted) {
+      color = '#00c000';
+      fillOpacity = 0.4;
+    } else if (selected) {
+      color = '#008b00';
+      fillOpacity = 0.4;
+    } else if (highlighted) {
+      color = '#0000ff';
+      fillOpacity = 0.4;
     }
 
     return {
@@ -145,13 +154,44 @@ $(function() {
   }
 
   function configureZone(feature, layer) {
+    feature.updateLayerStyle = function() {
+      layer.setStyle(getZoneStyle(feature));
+    };
+
+    layer.on('click', function() {
+
+      var previouslySelectedZone = selectedZone;
+      if (!selectedZone || selectedZone !== feature) {
+        selectedZone = feature;
+        onZoneSelected(selectedZone);
+      } else {
+        selectedZone = undefined;
+        onZoneDeselected(selectedZone);
+      }
+
+      feature.updateLayerStyle();
+      if (previouslySelectedZone) {
+        previouslySelectedZone.updateLayerStyle();
+      }
+    });
+
     layer.on('mouseout', function() {
-      layer.setStyle(getZoneStyle());
+      feature.properties.highlighted = false;
+      feature.updateLayerStyle();
     });
 
     layer.on('mouseover', function() {
-      layer.setStyle(getZoneStyle('highlighted'));
+      feature.properties.highlighted = true;
+      feature.updateLayerStyle();
     });
+  }
+
+  function onZoneSelected(feature) {
+    console.log('Zone ' + feature.properties.position + ' has been selected');
+  }
+
+  function onZoneDeselected() {
+    console.log('No zone selected');
   }
 
   function recordsToFeatureCollection(records) {

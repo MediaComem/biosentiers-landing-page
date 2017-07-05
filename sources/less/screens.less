@@ -1,4 +1,6 @@
 #ecrans {
+  padding-bottom: 100px;
+
   .bs-tabs {
     list-style: none;
     padding: 0;
@@ -28,19 +30,12 @@
 
 #screens-tab {
   .wrapper {
-    display: flex;
-    justify-content: center;
+    .tab-wrapper;
   }
 
   .screen-carousel {
-    order: 2;
-    height: 750px;
-    flex: 0 0 457px;
-    background: url(../img/tablet.png) no-repeat center center;
-    position: relative;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
+    .tablet-bg;
 
     .wrapper {
       width: 349px;
@@ -124,6 +119,23 @@
   }
 }
 
+#video {
+  .wrapper {
+    .tab-wrapper;
+  }
+
+  .screencast {
+    .tablet-bg;
+    justify-content: center;
+
+    iframe {
+      position: relative;
+      top: -3px;
+      left: -1px;
+    }
+  }
+}
+
 #screens-carousel {
   position: relative;
   left: -1px;
@@ -137,4 +149,19 @@
       background-color: @bs-blue;
     }
   }
+}
+
+.tab-wrapper() {
+  display: flex;
+  justify-content: center;
+}
+
+.tablet-bg() {
+  order: 2;
+  height: 670px;
+  flex: 0 0 530px;
+  background: url(../img/tablet.png) no-repeat center center;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
 }

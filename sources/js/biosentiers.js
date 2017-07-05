@@ -15,7 +15,6 @@
     var $activeLegend = $('.' + currentSlide, $screenTab);
     currentSlide = $(e.relatedTarget).attr('data-slide-id');
     var $newLegend = $('.' + currentSlide, $screenTab);
-    console.log($activeLegend, $newLegend);
     $activeLegend.addClass('hidden');
     $newLegend.removeClass('hidden');
   });

@@ -1,11 +1,13 @@
 node_modules/
 sources/images/
 sources/css/
+.screenrc
 .vscode/
 ._*
 dist/
 css/
 js/
+config.js
 
 ### OSX ###
 .AppleDouble

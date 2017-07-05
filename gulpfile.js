@@ -19,6 +19,13 @@ var banner = ['/*!\n',
   ''
 ].join('');
 
+var config = {};
+try {
+  config = require('./config');
+} catch(err) {
+  // ignore
+}
+
 // Compile LESS files from /less into /css
 gulp.task('less', function () {
   return gulp.src('sources/less/agency.less')
@@ -83,7 +90,8 @@ gulp.task('browserSync', function () {
     },
     middleware: [
       createProxy()
-    ]
+    ],
+    browser: process.env.BROWSER || config.browser
   });
 });
 

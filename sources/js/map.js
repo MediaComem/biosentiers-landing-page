@@ -84,7 +84,7 @@ $(function() {
 
   function displayZones(zones) {
 
-    var minLat, minLng, maxLat, maxLng;
+    var minLat, minLng, maxLat, maxLng, firstZone, lastZone;
     for (var i = 0; i < zones.length; i++) {
       var zone = zones[i];
 
@@ -96,6 +96,9 @@ $(function() {
         maxLng = Math.max(coordinate[0], maxLng || -180);
         maxLat = Math.max(coordinate[1], maxLat || -90);
       }
+
+      firstZone = !firstZone || zone.position < firstZone.position ? zone : firstZone;
+      lastZone = !lastZone || zone.position > lastZone.position ? zone : lastZone;
     }
 
     if (minLat === undefined || minLng === undefined || maxLat === undefined || maxLng === undefined) {
@@ -111,6 +114,16 @@ $(function() {
     addBackControl();
 
     L.geoJSON(recordsToFeatureCollection(zones)).addTo(map);
+
+    var start = firstZone && firstZone.points ? firstZone.points.start : undefined;
+    if (start && start.geometry && start.geometry.type == 'Point') {
+      L.marker(L.latLng(start.geometry.coordinates[1], start.geometry.coordinates[0])).addTo(map);
+    }
+
+    var end = lastZone && lastZone.points ? lastZone.points.end : undefined;
+    if (end && end.geometry && end.geometry.type == 'Point') {
+      L.marker(L.latLng(end.geometry.coordinates[1], end.geometry.coordinates[0])).addTo(map);
+    }
   }
 
   function recordsToFeatureCollection(records) {

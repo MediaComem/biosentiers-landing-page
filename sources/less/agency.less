@@ -6,17 +6,10 @@
 @import "about.less";
 @import "screens.less";
 @import "contact.less";
+@import "footer.less";
+@import "partners.less";
 
 // Global Components
-
-// accordeon
-
-.flex{
-  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
-  display: -ms-flexbox;  /* TWEENER - IE 10 */
-  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-  display: flex;
-}
 
 .no-margin {
   margin:0 !important;
@@ -95,13 +88,14 @@ a:focus,
 a:active,
 a.active {
   outline: none;
+  text-decoration: none;
+  color: white;
 }
-a:hover,
-a:focus,
-a:active,
+
 h1, h2, h3, h4, h5, h6 {
   .heading-font;
   font-weight: 700;
+  margin-top: 0;
 }
 
 .img-centered {
@@ -133,10 +127,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 20px 40px;
 }
 
-
-
-// Global Section Styles
-
 // Services Section
 
 .service-heading {
@@ -144,54 +134,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: none;
 }
 
-// Team Section
-
-
-
 // Footer
-
-footer {
-  padding: 25px 0;
-  text-align: center;
-  span.copyright {
-    line-height: 40px;
-    .heading-font;
-    text-transform: none;
-  }
-  ul.quicklinks {
-    margin-bottom: 0;
-    line-height: 40px;
-    .heading-font;
-    text-transform: none;
-  }
-}
-
-// Social Buttons
-
-ul.social-buttons {
-  margin-bottom: 0;
-  li {
-    a {
-      display: block;
-      background-color: @gray-darker;
-      height: 40px;
-      width: 40px;
-      border-radius: 100%;
-      font-size: 20px;
-      line-height: 40px;
-      color: white;
-      outline: none;
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      transition: all 0.3s;
-      &:hover,
-      &:focus,
-      &:active {
-        background-color: @theme-primary;
-      }
-    }
-  }
-}
 
 .btn:focus,
 .btn:active,
@@ -231,12 +174,11 @@ body {
   position:absolute;
 }
 
-.nopadding{
-  padding:0 !important;
-  margin: 0 !important;
-}
-
 .glyphicon {
   color: #fff;
   background-color: transparent;
+}
+
+section {
+  .full-section;
 }

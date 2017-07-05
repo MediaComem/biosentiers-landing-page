@@ -11,20 +11,35 @@
   /* ----- EVENTS ----- */
   $("div.slice").click(selectSlice);
 
-  $('#screens-carousel', $screenTab).on('slid.bs.carousel', function (e) {
+  $('#screens-carousel', $screenTab).on('slid.bs.carousel', changeScreenLegend);
+
+  $('ul.bs-tabs > li > a').click(scrollToApplication);
+
+  /* ----- FUNCTION ----- */
+
+  /**
+   * Scrolls the page so that the Application section is on top.
+   */
+  function scrollToApplication() {
+    scrollTo('#ecrans');
+  }
+
+  /**
+   * Changes the legend text to match the currently visible screen shot.
+   * @param {*} e 
+   */
+  function changeScreenLegend(e) {
     var $activeLegend = $('.' + currentSlide, $screenTab);
     currentSlide = $(e.relatedTarget).attr('data-slide-id');
     var $newLegend = $('.' + currentSlide, $screenTab);
     $activeLegend.addClass('hidden');
     $newLegend.removeClass('hidden');
-  });
-
-  /* ----- FUNCTION ----- */
+  }
 
   /**
    * Unselect the given slice in the "À propos" section.
    * This means hidding its content and collapsing the slice.
-   * @param {*} slice 
+   * @param {*} slice
    */
   function unselectSlice($slice) {
     $slice.removeClass('selected');
@@ -35,6 +50,8 @@
    * Select a clicked slice in the "À propos" section.
    */
   function selectSlice() {
+    scrollTo('#apropos');
+
     var $slice = $(this);
     var $shown = $('img:not(.hidden)', $images);
 
@@ -57,5 +74,15 @@
       }, 300); // The 300 here corresponds to the 0.3s of transition in the CSS
     }
     $shown.addClass('hidden');
+  }
+  
+  /**
+   * Scrolls to the designated anchor so that it's on top.
+   * @param {String} anchor 
+   */
+  function scrollTo(anchor) {
+    $('html, body').stop().animate({
+      scrollTop: ($(anchor).offset().top - 70)
+    }, 700, 'easeInOutExpo');
   }
 })(jQuery);

@@ -1,4 +1,14 @@
 #map {
+  min-height: 60vh;
+
+  @media(max-width: 768px) {
+    .full-section;
+    
+    &.small {
+      min-height: 50vh;
+    }
+  }
+
   .leaflet-custom-control {
     a {
       padding-top: 3px;

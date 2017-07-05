@@ -24,13 +24,18 @@
       }
     }
   }
-  .tab-content {
+}
+
+#screens-tab {
+  .wrapper {
     display: flex;
     justify-content: center;
   }
+
   .screen-carousel {
+    order: 2;
     height: 750px;
-    width: 475px;
+    flex: 0 0 457px;
     background: url(../img/tablet.png) no-repeat center center;
     position: relative;
     display: flex;
@@ -69,18 +74,67 @@
     }
   }
 
-  #screens-carousel {
-    position: relative;
-    left: -1px;
-    top: -3px;
+  .legend {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    .carousel-indicators {
-      li {
-        border-color: @bs-blue;
+    &.left {
+      order: 1;
+      padding-right: 25px;
+    }
+
+    &.right {
+      order: 3;
+      padding-left: 25px;
+    }
+
+    & > div {
+
+      &.s1 > h2 {
+        color: @bs-green;
       }
-      .active {
-        background-color: @bs-blue;
+
+      &.s2 > h2 {
+        color: @bs-yellow;
       }
+
+      &.s3 > h2 {
+        color: @bs-pink;
+      }
+
+      &.s4 > h2 {
+        color: @bs-navy;
+      }
+
+      & > * {
+        margin-bottom: 70px;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+
+    .pins {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+#screens-carousel {
+  position: relative;
+  left: -1px;
+  top: -3px;
+
+  .carousel-indicators {
+    li {
+      border-color: @bs-blue;
+    }
+    .active {
+      background-color: @bs-blue;
     }
   }
 }

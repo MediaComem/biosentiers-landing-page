@@ -132,7 +132,7 @@
     <div class="container">
       <!-- Nav tabs -->
       <ul class="bs-tabs">
-        <li class="active"><a href="#screens" data-toggle="tab">Écrans</a></li>
+        <li class="active"><a href="#screens-tab" data-toggle="tab">Écrans</a></li>
         <li><a href="#video" data-toggle="tab">Vidéo</a></li>
       </ul>
 
@@ -140,60 +140,101 @@
       <div class="tab-content">
 
         <!-- Screen Tab -->
-        <div class="tab-pane active fade in" id="screens">
-          <div class="screen-carousel">
-            <div class="wrapper">
-              <div id="screens-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                  <li data-target="#screens-carousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#screens-carousel" data-slide-to="1"></li>
-                  <li data-target="#screens-carousel" data-slide-to="2"></li>
-                  <li data-target="#screens-carousel" data-slide-to="3"></li>
-                </ol>
+        <div class="tab-pane active fade in" id="screens-tab">
+          <div class="wrapper">
+            <div class="screen-carousel">
+              <div class="wrapper">
+                <div id="screens-carousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#screens-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#screens-carousel" data-slide-to="1"></li>
+                    <li data-target="#screens-carousel" data-slide-to="2"></li>
+                    <li data-target="#screens-carousel" data-slide-to="3"></li>
+                  </ol>
 
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                  <div class="item active">
-                    <img src="./img/screens/01.png" alt="">
-                    <div class="carousel-caption">
-                      Réalité Augmentée
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div data-slide-id="s1" class="item active">
+                      <img src="./img/screens/01.png" alt="">
                     </div>
-                  </div>
-                  <div class="item">
-                    <img src="./img/screens/02.png" alt="">
-                    <div class="carousel-caption">
-                      Carte des environs
+                    <div data-slide-id="s2" class="item">
+                      <img src="./img/screens/02.png" alt="">
                     </div>
-                  </div>
-                  <div class="item">
-                    <img src="./img/screens/03.png" alt="">
-                    <div class="carousel-caption">
-                      Fiche espèce
+                    <div data-slide-id="s3" class="item">
+                      <img src="./img/screens/03.png" alt="">
                     </div>
-                  </div>
-                  <div class="item">
-                    <img src="./img/screens/04.png" alt="">
-                    <div class="carousel-caption">
-                      List d'éléments vus
+                    <div data-slide-id="s4" class="item">
+                      <img src="./img/screens/04.png" alt="">
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <!-- Controls -->
-            <a class="prev-screen" href="#screens-carousel" role="button" data-slide="prev">
+              <!-- Controls -->
+              <a class="prev-screen" href="#screens-carousel" role="button" data-slide="prev">
               <i class="glyphicon glyphicon-chevron-left" aria-hidden="true"></i>
             </a>
-            <a class="next-screen" href="#screens-carousel" role="button" data-slide="next">
+              <a class="next-screen" href="#screens-carousel" role="button" data-slide="next">
               <i class="glyphicon glyphicon-chevron-right" aria-hidden="true"></i>
             </a>
+            </div>
+
+            <div class="legend left">
+              <div class="s1">
+                <h2>Vue en réalité augmentée</h2>
+                <p>Observation des espaces naturels au travers de la vision caméra de l'appareil (smartphone, tablette) avec
+                  superposition d'éléments virtuels.</p>
+                <div class="pins">
+                  <img src="./img/tree_pin.png" alt="Arbres">
+                  <img src="./img/butterfly_pin.png" alt="Papillons">
+                  <img src="./img/flower_pin.png" alt="Fleurs">
+                  <img src="./img/bird_pin.png" alt="Oiseaux">
+                </div>
+              </div>
+              <div class="s2 hidden">
+                <h2>Carte 2D</h2>
+                <p>Visualisation cartographique du sentier avec ses points d'intérêt biodiversité et de la localisation courante
+                  de l'utilisateur.</p>
+              </div>
+              <div class="s3 hidden">
+                <h2>Fiche descriptive</h2>
+                <p>Description d'un point d'intérêt biodiversité apportant informations et connaissances sous la forme de textes
+                  explicatifs et de photographies.</p>
+              </div>
+              <div class="s4 hidden">
+                <h2>Dossier des observations</h2>
+                <p>Consultation des points d'intérêt biodiversité observés par l'utilisateur durant la découverte du sentier.</p>
+              </div>
+            </div>
+            <div class="legend right">
+              <div class="s1">
+                <p>Ces éléments sont des points d'intérêts biodiversité qui sont positionnés dans la vue selon la réalité du
+                  terrain.
+                </p>
+                <p>Leur icônographie, dynamique et interactivité offrent à l'utilisateur des informations et connaissances sur
+                  la biodiversité en présence, aux alentours du lieu d’observation.</p>
+              </div>
+              <div class="s2 hidden">
+                <p>Dans la vue en réalité augmentée, cette carte est également présente, sous une forme miniaturisée.</p>
+                <p>L'objectif est d'aider l'utilisateur à s'orienter.</p>
+              </div>
+              <div class="s3 hidden">
+                <p>Dès que l'utilisateur est suffisamment proche, l'élément virtuel de la vue réalité augmentée est interrogeable,
+                  présentant la fiche descriptive.</p>
+                <p>Elle aide l'utilisateur à identifier la biodiversité sur le terrain et l'invite à vivre une expérience directe
+                  de nature.</p>
+              </div>
+              <div class="s4 hidden">
+                <p>Tout au long de la découverte, c’est un dossier virtuel d’observations que chacun se construit, pour, par
+                  exemple, les consulter et les partager plus tard.</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- Video Tab -->
         <div role="tabpanel" class="tab-pane fade" id="video">
-          <div class="screen-carousel">
+          <div class="wrapper">
 
           </div>
         </div>

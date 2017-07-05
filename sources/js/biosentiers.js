@@ -4,9 +4,21 @@
   var $apropos = $("#apropos");
   var $panels = $("div.panels", $apropos);
   var $images = $("div.images", $apropos);
+  var $screenTab = $("#screens-tab");
+
+  var currentSlide = "s1";
 
   /* ----- EVENTS ----- */
   $("div.slice").click(selectSlice);
+
+  $('#screens-carousel', $screenTab).on('slide.bs.carousel', function (e) {
+    var $activeLegend = $('.' + currentSlide, $screenTab);
+    currentSlide = $(e.relatedTarget).attr('data-slide-id');
+    var $newLegend = $('.' + currentSlide, $screenTab);
+    console.log($activeLegend, $newLegend);
+    $activeLegend.addClass('hidden');
+    $newLegend.removeClass('hidden');
+  });
 
   /* ----- FUNCTION ----- */
 
@@ -33,7 +45,7 @@
       // Show the default image
       $('#aboutDef').removeClass('hidden');
     } else {
-      var $selected = $panels.children('div.selected')
+      var $selected = $panels.children('div.selected');
       unselectSlice($selected);
       $slice.addClass('selected');
       // Show the adequate image depending on the slice clicked.

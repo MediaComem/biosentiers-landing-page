@@ -11,7 +11,7 @@
   /* ----- EVENTS ----- */
   $("div.slice").click(selectSlice);
 
-  $('#screens-carousel', $screenTab).on('slide.bs.carousel', function (e) {
+  $('#screens-carousel', $screenTab).on('slid.bs.carousel', function (e) {
     var $activeLegend = $('.' + currentSlide, $screenTab);
     currentSlide = $(e.relatedTarget).attr('data-slide-id');
     var $newLegend = $('.' + currentSlide, $screenTab);

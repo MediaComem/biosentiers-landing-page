@@ -154,7 +154,9 @@ $(function() {
   }
 
   function configureZone(feature, layer) {
-    feature.setLayerStyle = _.bind(layer.setStyle, layer);
+    feature.updateLayerStyle = function() {
+      layer.setStyle(getZoneStyle(feature));
+    };
 
     layer.on('click', function() {
 
@@ -167,20 +169,20 @@ $(function() {
         onZoneDeselected(selectedZone);
       }
 
-      feature.setLayerStyle(getZoneStyle(feature));
+      feature.updateLayerStyle();
       if (previouslySelectedZone) {
-        previouslySelectedZone.setLayerStyle(getZoneStyle(previouslySelectedZone));
+        previouslySelectedZone.updateLayerStyle();
       }
     });
 
     layer.on('mouseout', function() {
       feature.properties.highlighted = false;
-      feature.setLayerStyle(getZoneStyle(feature));
+      feature.updateLayerStyle();
     });
 
     layer.on('mouseover', function() {
       feature.properties.highlighted = true;
-      feature.setLayerStyle(getZoneStyle(feature));
+      feature.updateLayerStyle();
     });
   }
 

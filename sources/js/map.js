@@ -66,14 +66,9 @@ $(function() {
 
   function displayPath(paths) {
 
-    var path;
-    for (var i = 0; i < paths.length; i++) {
-      if (!path || path.length !== undefined && paths[i].length > path.length) {
-        path = paths[i];
-      }
-    }
+    var longestPath = _.maxBy(paths, 'length');
 
-    L.geoJSON(recordsToFeatureCollection([ path ]), {
+    L.geoJSON(recordsToFeatureCollection([ longestPath ]), {
       style: function(feature) {
         return {
           color: '#ff00bb'
@@ -85,21 +80,19 @@ $(function() {
   function displayZones(zones) {
 
     var minLat, minLng, maxLat, maxLng, firstZone, lastZone;
-    for (var i = 0; i < zones.length; i++) {
-      var zone = zones[i];
+    _.each(zones, function(zone) {
 
       var coordinates = zone.geometry.coordinates[0];
-      for (var j = 0; j < coordinates.length; j++) {
-        var coordinate = coordinates[j];
+      _.each(coordinates, function(coordinate) {
         minLng = Math.min(coordinate[0], minLng || 180);
         minLat = Math.min(coordinate[1], minLat || 90);
         maxLng = Math.max(coordinate[0], maxLng || -180);
         maxLat = Math.max(coordinate[1], maxLat || -90);
-      }
+      });
 
       firstZone = !firstZone || zone.position < firstZone.position ? zone : firstZone;
       lastZone = !lastZone || zone.position > lastZone.position ? zone : lastZone;
-    }
+    });
 
     if (minLat === undefined || minLng === undefined || maxLat === undefined || maxLng === undefined) {
       return;
@@ -113,17 +106,52 @@ $(function() {
 
     addBackControl();
 
-    L.geoJSON(recordsToFeatureCollection(zones)).addTo(map);
+    L
+      .geoJSON(recordsToFeatureCollection(zones), {
+        onEachFeature: configureZone,
+        style: getZoneStyle()
+      })
+      .bindTooltip(function(layer) {
+        return layer.feature.properties.keyword;
+      })
+      .addTo(map);
 
-    var start = firstZone && firstZone.points ? firstZone.points.start : undefined;
-    if (start && start.geometry && start.geometry.type == 'Point') {
+    if (_.get(firstZone, 'points.start.geometry.type') === 'Point') {
+      var start = firstZone.points.start;
       L.marker(L.latLng(start.geometry.coordinates[1], start.geometry.coordinates[0])).addTo(map);
     }
 
-    var end = lastZone && lastZone.points ? lastZone.points.end : undefined;
-    if (end && end.geometry && end.geometry.type == 'Point') {
+    if (_.get(lastZone, 'points.end.geometry.type') === 'Point') {
+      var end = lastZone.points.end;
       L.marker(L.latLng(end.geometry.coordinates[1], end.geometry.coordinates[0])).addTo(map);
     }
+  }
+
+  function getZoneStyle(state) {
+
+    var color = '#3388ff';
+    var fillOpacity = 0.2;
+    switch (state) {
+      case 'highlighted':
+        color = '#0000ff';
+        fillOpacity = 0.4;
+        break;
+    }
+
+    return {
+      color: color,
+      fillOpacity: fillOpacity
+    };
+  }
+
+  function configureZone(feature, layer) {
+    layer.on('mouseout', function() {
+      layer.setStyle(getZoneStyle());
+    });
+
+    layer.on('mouseover', function() {
+      layer.setStyle(getZoneStyle('highlighted'));
+    });
   }
 
   function recordsToFeatureCollection(records) {
@@ -132,7 +160,8 @@ $(function() {
       features: records.map(function(record) {
         return {
           type: 'Feature',
-          geometry: record.geometry
+          geometry: record.geometry,
+          properties: _.omit(record, 'geometry')
         };
       })
     };

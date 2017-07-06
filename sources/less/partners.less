@@ -12,6 +12,16 @@
         padding: @partner-height;
         justify-content: center;
         align-items: center;
+        transform: scale(0.9);
+        -webkit-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        -moz-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        -o-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        
+
+        &:hover {
+          transform: scale(1.1);
+        }
 
         img {
           width: 100%;

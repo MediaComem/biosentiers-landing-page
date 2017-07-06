@@ -2,31 +2,23 @@
   min-height: initial;
   padding: 75px 0;
 
-  .part-logo img {
-    width: 100%;
-    padding:20%;
-  }
+  .container {
+    div {
 
-  .contact-logo img {
-    width: 100%;
-    padding:20%;
-  }
+      .partner {
+        @partner-height: 50px;
 
-  .contact-text {
-    vertical-align: middle;
-    display: inline-block;
-    position: relative;
-    background-color: none;
-    padding-top: 50%;
-    padding-bottom: 50%;
-  }
+        display: flex;
+        padding: @partner-height;
+        justify-content: center;
+        align-items: center;
 
-  .contact-text-var {
-    vertical-align: middle;
-    display: inline-block;
-    position: relative;
-    background-color: none;
-    padding-top: 30%;
-    padding-bottom: 46%;
+        img {
+          width: 100%;
+          max-width: 360px;
+          object-fit: contain;
+        }
+      }
+    }
   }
 }

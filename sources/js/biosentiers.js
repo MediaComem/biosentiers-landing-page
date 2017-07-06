@@ -2,7 +2,8 @@
   "use strict";
 
   var $apropos = $("#apropos");
-  var $panels = $("div.panels", $apropos);
+  var $panelsBgs = $("div.panels", $apropos);
+  var $panels = $('div.slice-wrapper', $apropos);
   var $images = $("div.images", $apropos);
   var $screenTab = $("#screens-tab");
 
@@ -44,6 +45,7 @@
   function unselectSlice($slice) {
     $slice.removeClass('selected');
     $('div.content', $slice).addClass('hidden');
+    $("#slice-bg-" + $slice.attr('data-slice-id')).removeClass('selected');
   }
 
   /**
@@ -60,22 +62,23 @@
       unselectSlice($slice);
       // Show the default image
       $('#aboutDef').removeClass('hidden');
+      $shown.addClass('hidden');
     } else {
       var $selected = $panels.children('div.selected');
       unselectSlice($selected);
       $slice.addClass('selected');
+      $("#slice-bg-" + $slice.attr('data-slice-id')).addClass('selected');
+
       // Show the adequate image depending on the slice clicked.
-      $slice.hasClass('red') && $("#about1").removeClass('hidden');
-      $slice.hasClass('orange') && $("#about2").removeClass('hidden');
-      $slice.hasClass('blue') && $("#about3").removeClass('hidden');
       // Wait for the slice to be completely open before showing its content.
       setTimeout(function () {
         $('div.content', $slice).removeClass('hidden');
-      }, 300); // The 300 here corresponds to the 0.3s of transition in the CSS
+        $("#about" + $slice.attr('data-slice-id')).removeClass('hidden');
+        $shown.addClass('hidden');
+      }, 200); // The 300 here corresponds to the 0.3s of transition in the CSS
     }
-    $shown.addClass('hidden');
   }
-  
+
   /**
    * Scrolls to the designated anchor so that it's on top.
    * @param {String} anchor 

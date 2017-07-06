@@ -35,9 +35,13 @@
         opacity: 0.8;
       }
 
-      @media(min-width: 995px) {
+      @media(min-width: 768px) and (max-width: 995px) {
         span {
-          visibility: hidden;
+          display: none;
+        }
+
+        img {
+          margin-right: 0;
         }
       }
     }
@@ -88,12 +92,33 @@
       }
     }
   }
+
+  &.affix {
+    .reduced-navbar;
+  }
+
+  @media(max-width: 768px) {
+    .reduced-navbar;
+  }
 }
 
-.navbar-custom.affix {
-
+.reduced-navbar() {
   .navbar-header {
     padding: 10px 0;
+
+    .navbar-brand {
+      font-size: 2em;
+
+      span {
+        position: relative;
+        top: 3px;
+      }
+
+      img {
+        height: 90%;
+        position: static;
+      }
+    }
   }
 
   .nav li {
@@ -101,20 +126,6 @@
 
     a {
       padding-bottom: 22px;
-    }
-  }
-
-  .navbar-brand {
-    font-size: 2em;
-
-    span {
-      position: relative;
-      top: 3px;
-    }
-
-    img {
-      height: 90%;
-      position: static;
     }
   }
 }

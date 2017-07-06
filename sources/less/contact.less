@@ -1,7 +1,7 @@
 #contacts {
   color:white;
   min-height: initial;
-    .gradient-bg;
+  .gradient-bg;
 
   .info {
     // padding: 100px 75px 100px 0;
@@ -59,17 +59,42 @@
       flex: 1;
       cursor: pointer;
       overflow: hidden;
-
-      &:hover {
-        img {
-          filter: saturate(200%);
-        }
-      } 
+      position: relative;
 
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        -webkit-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        -moz-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        -o-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.05);
+          filter: brightness(50%);
+        }
+      }
+
+      & > .article {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 25px;
+
+        .date {
+          align-self: flex-end;
+        }
       }
     }
   }

@@ -82,46 +82,52 @@
 
   <!-- À Propos -->
   <section id="apropos">
+    <div class="container">
+      <div class="slice-wrapper">
+        <div class="slice" data-slice-id="1">
+          <div class="title">
+            <h2><span>1</span>Promenade du sentier</h2>
+          </div>
+          <div class="content hidden">
+            <p>Suivez le sentier spécialement créé pour vous afin de constater l’explosion de biodiversité le long du parcours.</p>
+            <p>Le sentier permet ainsi de se rendre de la gare d’Yverdon-les-Bains jusqu’au centre Champ-Pittet, en traversant
+              des zones variées en espèces et en paysages.</p>
+          </div>
+        </div>
+        <div class="slice" data-slice-id="2">
+          <div class="title">
+            <h2><span>2</span> Réalité augmentée</h2>
+          </div>
+          <div class="content hidden">
+            <p>La réalité augmentée permet l’ajout d’informations supplémentaires directement sur l’écran de l’appareil mobile.</p>
+            <p>Repérez les nombreux points d’intérêts présents sur le parcours (oiseaux, fleurs, arbres, etc) et approchez-vous
+              au plus près de la biodiversité.</p>
+          </div>
+        </div>
+        <div class="slice" data-slice-id="3">
+          <div class="title">
+            <h2><span>3</span> Information sur l'espèce</h2>
+          </div>
+          <div class="content hidden">
+            <p>Chaque point d’intérêt du sentier vous offre, pour peu que vous soyez à proximité, des informations sur une espèce
+              proche.
+            </p>
+            <p>À vous d’utiliser au mieux les renseignements qui vous sont donnés pour repérer dans l’environnement l’espèce
+              concernée, et ainsi en apprendre plus sur la vie de la nature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="panels">
-      <div class="red slice">
-        <div class="title">
-          <h2><span>1</span>Promenade du sentier</h2>
-        </div>
-        <div class="content hidden">
-          <p>Suivez le sentier spécialement créé pour vous afin de constater l’explosion de biodiversité le long du parcours.</p>
-          <p>Le sentier permet ainsi de se rendre de la gare d’Yverdon-les-Bains jusqu’au centre Champ-Pittet, en traversant
-            des zones variées en espèces et en paysages.</p>
-        </div>
-      </div>
-      <div class="orange slice">
-        <div class="title">
-          <h2><span>2</span> Réalité augmentée</h2>
-        </div>
-        <div class="content hidden">
-          <p>La réalité augmentée permet l’ajout d’informations supplémentaires directement sur l’écran de l’appareil mobile.</p>
-          <p>Repérez les nombreux points d’intérêts présents sur le parcours (oiseaux, fleurs, arbres, etc) et approchez-vous
-            au plus près de la biodiversité.</p>
-        </div>
-      </div>
-      <div class="blue slice">
-        <div class="title">
-          <h2><span>3</span> Information sur l'espèce</h2>
-        </div>
-        <div class="content hidden">
-          <p>Chaque point d’intérêt du sentier vous offre, pour peu que vous soyez à proximité, des informations sur une espèce
-            proche.
-          </p>
-          <p>À vous d’utiliser au mieux les renseignements qui vous sont donnés pour repérer dans l’environnement l’espèce concernée,
-            et ainsi en apprendre plus sur la vie de la nature.</p>
-        </div>
-      </div>
+      <div id="slice-bg-1" class="red"></div>
+      <div id="slice-bg-2" class="orange"></div>
+      <div id="slice-bg-3" class="blue"></div>
     </div>
     <div class="images">
       <img id="about1" class="img-responsive hidden" src="./img/about1.jpg">
       <img id="about2" class="img-responsive hidden" src="./img/about2.jpg">
       <img id="about3" class="img-responsive hidden" src="./img/about3.jpg">
       <img id="aboutDef" class="img-responsive" src="./img/about_def.jpg">
-    </div>
     </div>
   </section>
 
@@ -279,10 +285,26 @@
         </div>
         <div class="col-md-6 col-sm-12 articles">
           <article>
-            <img src="./img/about2.jpg">
+            <div class="article black-gradient">
+              <div class="date">02.06.2017</div>
+              <div class="content">
+                <h2>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</h2>
+                <p>Ui nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetu. Ntore veritatis
+                  et quasi architecto beatae vitae dicta</p>
+              </div>
+            </div>
+            <img src="./img/article1.jpg">
           </article>
           <article>
-            <img src="./img/about2.jpg">
+            <div class="article black-gradient">
+              <div class="date">02.06.2017</div>
+              <div class="content">
+                <h2>Nemo enim ipsam voluptatem quia voluptas sit aspernatur</h2>
+                <p>Ui nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetu. Ntore veritatis
+                  et quasi architecto beatae vitae dicta</p>
+              </div>
+            </div>
+            <img src="./img/article2.jpg">
           </article>
         </div>
       </div>
@@ -311,8 +333,8 @@
   </section>
 
   <footer>
-    <div class="container">
-      &copy; Media Engineering Institute 2017-.
+    <div class="container heading-font">
+      Copyright &copy; 2017 MEI/Insit All Rights Reserved
     </div>
   </footer>
 

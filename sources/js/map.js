@@ -63,7 +63,7 @@ $(function() {
 
   function loadData() {
     return $.when(
-      $.ajax('/api/trails/' + trailId + '/paths'),
+      $.ajax('/api/trails/' + trailId + '?include=geometry'),
       $.ajax({
         url: '/api/trails/' + trailId + '/zones',
         dataType: 'json'
@@ -71,18 +71,15 @@ $(function() {
     );
   }
 
-  function displayData(pathsResult, zonesResult) {
+  function displayData(trailResult, zonesResult) {
     return $.when([
-      displayPath(pathsResult[0]),
-      displayZones(zonesResult[0])
+      displayPath(trailResult[0]),
+      displayZones(zonesResult[0], trailResult[0])
     ]);
   }
 
-  function displayPath(paths) {
-
-    var longestPath = _.maxBy(paths, 'length');
-
-    L.geoJSON(recordsToFeatureCollection([ longestPath ]), {
+  function displayPath(trail) {
+    L.geoJSON(recordsToFeatureCollection([ trail ]), {
       style: function(feature) {
         return {
           color: '#ff00bb'
@@ -91,7 +88,7 @@ $(function() {
     }).addTo(map);
   }
 
-  function displayZones(zones) {
+  function displayZones(zones, trail) {
 
     var minLat, minLng, maxLat, maxLng, firstZone, lastZone;
     _.each(zones, function(zone) {
@@ -104,8 +101,8 @@ $(function() {
         maxLat = Math.max(coordinate[1], maxLat || -90);
       });
 
-      firstZone = !firstZone || zone.position < firstZone.position ? zone : firstZone;
-      lastZone = !lastZone || zone.position > lastZone.position ? zone : lastZone;
+      firstZone = !firstZone || getZonePosition(zone, trail) < getZonePosition(firstZone, trail) ? zone : firstZone;
+      lastZone = !lastZone || getZonePosition(zone, trail) > getZonePosition(lastZone, trail) ? zone : lastZone;
     });
 
     if (minLat === undefined || minLng === undefined || maxLat === undefined || maxLng === undefined) {
@@ -122,7 +119,9 @@ $(function() {
 
     L
       .geoJSON(recordsToFeatureCollection(zones), {
-        onEachFeature: configureZone,
+        onEachFeature: function(feature, layer) {
+          return configureZone(feature, layer, trail);
+        },
         style: getZoneStyle()
       })
       .bindTooltip(function(layer) {
@@ -139,6 +138,10 @@ $(function() {
       var end = lastZone.points.end;
       L.marker(L.latLng(end.geometry.coordinates[1], end.geometry.coordinates[0])).addTo(map);
     }
+  }
+
+  function getZonePosition(zone, trail) {
+    return zone.trailHrefs[trail.href].position;
   }
 
   function getZoneStyle(feature, state) {
@@ -166,7 +169,7 @@ $(function() {
     };
   }
 
-  function configureZone(feature, layer) {
+  function configureZone(feature, layer, trail) {
     feature.updateLayerStyle = function() {
       layer.setStyle(getZoneStyle(feature));
     };
@@ -176,7 +179,7 @@ $(function() {
       var previouslySelectedZone = selectedZone;
       if (!selectedZone || selectedZone !== feature) {
         selectedZone = feature;
-        onZoneSelected(selectedZone);
+        onZoneSelected(selectedZone, trail);
       } else {
         selectedZone = undefined;
         onZoneDeselected(selectedZone);

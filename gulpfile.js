@@ -77,6 +77,9 @@ gulp.task('copy', function () {
     '!node_modules/font-awesome/*.json'
   ])
     .pipe(gulp.dest('vendor/font-awesome'));
+
+  gulp.src(['node_modules/object-fit-images/dist/*.min.js'])
+    .pipe(gulp.dest('vendor/object-fit-images'));
 });
 
 // Run everything

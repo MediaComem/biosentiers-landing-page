@@ -29,5 +29,8 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp dev"
+  },
+  "dependencies": {
+    "object-fit-images": "^3.2.3"
   }
 }

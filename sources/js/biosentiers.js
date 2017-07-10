@@ -1,6 +1,8 @@
 (function ($) {
   "use strict";
 
+  objectFitImages();
+
   var $apropos = $("#apropos");
   var $panelsBgs = $("div.panels", $apropos);
   var $panels = $('div.slice-wrapper', $apropos);

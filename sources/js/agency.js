@@ -7,7 +7,7 @@
   $('a.page-scroll').bind('click', function (event) {
     var $anchor = $(this);
     $('html, body').stop().animate({
-      scrollTop: ($($anchor.attr('href')).offset().top - 70)
+      scrollTop: ($($anchor.attr('href')).offset().top - 69)
     }, 700, 'easeInOutExpo');
     event.preventDefault();
   });
@@ -15,7 +15,7 @@
   // Highlight the top nav as scrolling occurs
   $('body').scrollspy({
     target: '.navbar-fixed-top',
-    offset: 70
+    offset: 100
   });
 
   // Closes the Responsive Menu on Menu Item Click

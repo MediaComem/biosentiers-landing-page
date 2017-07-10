@@ -76,7 +76,9 @@
       -webkit-transition: margin-top 0.3s;
       -moz-transition: margin-top 0.3s;
       transition: margin-top 0.3s;
-      overflow: auto;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
 
       @media(max-width: @sm-max) {
         max-width: calc(~"100% - 100px");
@@ -91,6 +93,11 @@
         color: @bs-pink;
         margin-bottom: 50px;
         text-transform: capitalize;
+      }
+
+      p {
+        flex: 1;
+        overflow: auto;
       }
     }
   }

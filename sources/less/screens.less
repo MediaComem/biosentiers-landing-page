@@ -182,8 +182,11 @@
   }
 
   .screencast {
-    .tablet-bg;
     justify-content: center;
+
+    @media(min-width: @xs-min) {
+      .tablet-bg;
+    }
 
     iframe {
       position: relative;

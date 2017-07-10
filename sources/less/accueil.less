@@ -9,14 +9,18 @@
   .background-cover;
 
   .wrapper {
-    padding-bottom: 50px; 
-    min-height: 100vh;
     .black-gradient;
 
     .container {
-      padding-top: 200px;
-      @media(max-width: 767px) {
-        padding-top: 100px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 100px;
+
+      @media(max-width: @xs-max) {
+
       }
 
       img {
@@ -30,7 +34,7 @@
   }
 
   .intro-text {
-    padding: 100px 22% 40px 22%;
+    padding: 0 22%;
 
     .intro-heading {
       font-size: 1.1em;
@@ -54,21 +58,20 @@
     }
     .glyphicon {
       font-size: 3em;
-      -webkit-transition: opacity 0.1s;
-      -moz-transition: opacity 0.1s;
-      transition: opacity 0.1s;
+      opacity: 0.5;
     }
   }
 }
 
-@media(max-width:768px) {
+@media(max-width: @xs-max) {
   #accueil {
 
     .intro-text {
-      padding: 100px 15px 25px 15px;
+      padding: 0 15px;
     
       .intro-heading {
-        margin-bottom: 25px;
+        line-height: 30px;
+        font-size: 1em;
         .body-font;
       }
     }

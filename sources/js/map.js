@@ -2,6 +2,17 @@ $(function() {
 
   var trailId = '8c8c2474-4375-4121-95d3-763f381717df';
   var map, selectedZone, trailBounds;
+  var $zoneSheet = $("#zone-sheet");
+  var $zoneBackdrop = $("div.backdrop", $("#map"));
+
+  $zoneBackdrop.click(function(e) {
+    if (e.target !== this) return;
+    $(this).removeClass('active');
+  });
+
+  $("button.close", $zoneSheet).click(function() {
+    $zoneBackdrop.removeClass('active');
+  });
 
   $.when()
     .then(initMap)
@@ -189,7 +200,11 @@ $(function() {
   }
 
   function onZoneSelected(feature) {
-    console.log('Zone ' + feature.properties.position + ' has been selected');
+    console.log(feature);
+    $zoneBackdrop.addClass('active');
+    $("h2", $zoneSheet).text(feature.properties.keyword);
+    $("p", $zoneSheet).text(feature.properties.description);
+    $("span.zone-number", $zoneSheet).text(feature.properties.position);
   }
 
   function onZoneDeselected() {

@@ -5,17 +5,14 @@
 
   .info {
     // padding: 100px 75px 100px 0;
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: @def-section-pad;
+    padding-bottom: @def-section-pad;
     padding-right: 75px;
 
-    @media(max-width: @xs-max) {
+    @media(max-width: @sm-max) {
       padding-right: 15px;
-      padding-top: 50px;
-    }
-
-    h2 {
-      margin-bottom: 70px;
+      padding-top: @min-section-pad;
+      padding-bottom: @min-section-pad;
     }
 
     .references {
@@ -46,6 +43,10 @@
         .logo {
           margin-right: 20px;
           opacity: 0.7;
+          -webkit-transition: opacity 0.2s ease-in-out;
+          -moz-transition: opacity 0.2s ease-in-out;
+          -o-transition: opacity 0.2s ease-in-out;
+          transition: opacity 0.2s ease-in-out;
         }
 
         @media(max-width: @xs-max) {
@@ -70,6 +71,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        filter: brightness(80%);
         -webkit-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
         -moz-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
         -o-transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
@@ -102,6 +104,8 @@
         }
 
         .content > h2 {
+          margin-bottom: 10px;
+
           @media(max-width: @xs-max) {
             font-size: 1.5em;
           }

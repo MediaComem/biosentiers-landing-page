@@ -93,6 +93,14 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
 }
 
+h2 {
+  margin-bottom: 70px;
+  
+  @media(max-width: @sm-max) {
+    margin-bottom: @min-section-pad;
+  }
+}
+
 .img-centered {
   margin: 0 auto;
 }

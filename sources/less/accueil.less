@@ -15,9 +15,16 @@
 
     .container {
       padding-top: 200px;
+      @media(max-width: 767px) {
+        padding-top: 100px;
+      }
 
       img {
         opacity: 0.95;
+        width: 50vw;
+        height: 50vw;
+        max-height: 300px;
+        max-width: 300px;
       }
     }
   }
@@ -26,7 +33,7 @@
     padding: 100px 22% 40px 22%;
 
     .intro-heading {
-      font-size: 1.3em;
+      font-size: 1.1em;
       line-height: 40px;
       .body-font;
     }
@@ -61,7 +68,6 @@
       padding: 100px 15px 25px 15px;
     
       .intro-heading {
-        line-height: 50px;
         margin-bottom: 25px;
         .body-font;
       }

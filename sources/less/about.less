@@ -1,8 +1,11 @@
 // Less code for the "À propos" section
 #apropos {
   display: flex;
-  height: 700px;
   position: relative;
+
+  @media(min-width: @xs-min) {
+    height: 700px;
+  }
 
   .container {
     position: absolute;
@@ -19,7 +22,7 @@
       cursor: pointer;
       color: white;
 
-      @media(max-width: 768px) {
+      @media(max-width: @xs-max) {
         width: 100%;
       }
 
@@ -28,10 +31,10 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 0 50px 0 15px;
+        padding: 0 50px 0 0;
         .flex-transition;
 
-        @media(max-width: 768px) {
+        @media(max-width: @xs-max) {
           padding: 0 15px;
         }
       
@@ -43,7 +46,7 @@
       & > div:hover:not(.selected) h2 {
         // padding-left: 100px;
       
-        span {
+        span:first-child {
           background-color: rgba(255, 255, 255, 0.2);
         }
       }
@@ -57,8 +60,13 @@
         transition: padding 0.2s ease-out;
         display: flex;
         align-items: center;
+
+        @media(max-width: @xs-max) {
+            font-size: 1.5em;
+        }
         
         span {
+
           &:first-child {
             flex: 0 0 50px;
             height: 50px;
@@ -72,18 +80,29 @@
             -moz-transition: background-color 0.2s;
             -o-transition: background-color 0.2s;
             transition: background-color 0.2s;
+
+            @media(max-width: @xs-max) {
+              flex-basis: 30px;
+              height: 30px;
+              border-width: 1px;
+            }
           }
         }
       }
     
       .content {
         margin-top: 30px;
-        padding: 0 15px 0 80px;
+        padding: 0 15px 0 70px;
         line-height: 30px;
         .text-font;
 
-        @media(max-width: 768px) {
-          padding-left: 15px;
+        @media(min-width: @sm-min) {
+          padding-right: 70px;
+        }
+
+        @media(max-width: @xs-max) {
+          padding-left: 0;
+          padding-right: 0;
         }
       }
     }
@@ -101,7 +120,7 @@
       object-fit: cover;
     }
 
-    @media(max-width: 768px) {
+    @media(max-width: @xs-max) {
       display: none;
     }
   }

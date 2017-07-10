@@ -10,7 +10,9 @@ $(function() {
 
   function initMap() {
     map = L.map('map', {
-      scrollWheelZoom: false
+      scrollWheelZoom: false,
+      dragging: false,
+      tap: false
     }).setView([ 46.778626, 6.641014 ], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

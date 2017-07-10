@@ -1,5 +1,9 @@
 #ecrans {
-  padding-bottom: 100px;
+  padding-bottom: @def-section-pad;
+
+  @media(max-width: @sm-max) {
+    padding-bottom: @min-section-pad;
+  }
 
   .bs-tabs {
     list-style: none;
@@ -12,8 +16,8 @@
     li {
       font-size: 1.3em;
       display: inline-block;
-      padding: 10px 0;
-      margin: 15px;
+      padding: 10px 15px;
+      margin: 15px 0;
       &.active {
         border-bottom: 2px solid @navlinks-def;
       }
@@ -46,17 +50,30 @@
   .screen-carousel {
     justify-content: space-between;
     .tablet-bg;
+    background-size: contain;
 
     @media(max-width: @sm-max) {
       order: 1;
     }
 
+    @media(max-width: @xs-max) {
+      padding: 0;
+    }
+
     .wrapper {
-      width: 349px;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       order: 2;
+
+      @media(max-width: 679px) {
+        padding: 10%;
+      }
+
+      @media(min-width: 680px) and (max-width: @xs-max) {
+        padding: 8%;
+      }
     }
 
     .prev-screen, .next-screen {
@@ -135,10 +152,6 @@
         color: @bs-navy;
       }
 
-      h2 {
-        margin-bottom: 70px;
-      }
-
       @media(min-width: @sm-min) {
         & > * {
           margin-bottom: 70px;
@@ -202,7 +215,6 @@
 
 .tablet-bg() {
   order: 2;
-  height: 670px;
   background: url(../img/tablet.png) no-repeat center center;
   display: flex;
   align-items: center;
@@ -213,6 +225,7 @@
   }
 
   @media(min-width: @xs-min) {
+    height: 670px; 
     flex: 0 0 530px;
   }
 }

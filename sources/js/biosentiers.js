@@ -1,8 +1,6 @@
 (function ($) {
   "use strict";
 
-  objectFitImages();
-
   var $apropos = $("#apropos");
   var $panelsBgs = $("div.panels", $apropos);
   var $panels = $('div.slice-wrapper', $apropos);
@@ -10,6 +8,9 @@
   var $screenTab = $("#screens-tab");
 
   var currentSlide = "s1";
+
+  // Activating the polyfill for object-fit 
+  objectFitImages($('img', $images));
 
   /* ----- EVENTS ----- */
   $("div.slice").click(selectSlice);

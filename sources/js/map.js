@@ -125,7 +125,7 @@ $(function() {
         style: getZoneStyle()
       })
       .bindTooltip(function(layer) {
-        return layer.feature.properties.keyword;
+        return layer.feature.properties.type;
       })
       .addTo(map);
 

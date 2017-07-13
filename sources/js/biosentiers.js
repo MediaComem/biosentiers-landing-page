@@ -6,6 +6,7 @@
   var $panels = $('div.slice-wrapper', $apropos);
   var $images = $("div.images", $apropos);
   var $screenTab = $("#screens-tab");
+  var $qrCodeBackdrop = $("#qr-code-lg");
 
   var currentSlide = "s1";
 
@@ -18,6 +19,14 @@
   $('#screens-carousel', $screenTab).on('slid.bs.carousel', changeScreenLegend);
 
   $('ul.bs-tabs > li > a').click(scrollToApplication);
+
+  $("#qr-code").click(function() {
+    $qrCodeBackdrop.removeClass('hidden');
+  });
+
+  $qrCodeBackdrop.click(function() {
+    $qrCodeBackdrop.addClass('hidden');
+  });
 
   /* ----- FUNCTION ----- */
 

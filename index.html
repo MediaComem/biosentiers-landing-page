@@ -161,7 +161,8 @@
 
       <!-- Nav tabs -->
       <ul class="bs-tabs">
-        <li class="active"><a href="#screens-tab" data-toggle="tab">Écrans</a></li>
+        <li class="active"><a href="#download" data-toggle="tab">Téléchargement</a></li>
+        <li><a href="#screens-tab" data-toggle="tab">Écrans</a></li>
         <li><a href="#video" data-toggle="tab">Vidéo</a></li>
       </ul>
 
@@ -169,7 +170,7 @@
       <div class="tab-content">
 
         <!-- Screen Tab -->
-        <div class="tab-pane active fade in" id="screens-tab">
+        <div class="tab-pane fade" id="screens-tab">
           <div class="wrapper">
             <div class="screen-carousel">
               <div class="wrapper">
@@ -270,9 +271,71 @@
             </div>
           </div>
         </div>
+
+        <!-- Video Tab -->
+        <div role="tabpanel" class="tab-pane active in fade" id="download">
+          <div class="wrapper">
+            <div class="alert danger">L'application BioSentiers est en <strong>phase de développement</strong> et n'est actuellement pas disponible
+              dans Google Play ou l'App Store.</div>
+            <p>Vous pouvez <strong>télécharger la version bêta</strong> de l'application, telle qu'elle a été présentée lors
+              de la Fête de la Nature au centre Champ-Pittet d'Yverdon-les-Bains, le 21 mai 2017.</p>
+            <p class="alert warning">Attention ! Cette version bêta n'est disponible que sur les appareils <strong>Android</strong> !</p>
+            <p>Pour cela, il vous suffit de suivre, sur votre smartphone ou tablette Android, les 3 étapes suivantes :</p>
+            <div class="steps row">
+              <div class="col-md-4">
+                <h2>1 - Autoriser les sources inconnues</h2>
+                <p>Par défaut, Android n'autorise l'installation d'applications que si elle proviennent de Google Play.</p>
+                <p>Pour modifier ce comportement, dans l'applications <strong>Paramètres</strong> de votre appareil, accéder au paramètre <strong>Sources inconnues</strong></p>
+                <p class="alert info">
+                  </span>Trouvez-le grâce au champ de recherche, ou dans la section <strong>Sécurité</strong> de vos paramètres.</p>
+                <p>Si le paramètre est désactivé, activez-le. S'il est déjà activé, tout va bien !</p>
+                <img src="./img/unknow-sources.png" alt="Exemple de paramètre 'Sources Inconnues'" title="Exemple de paramètre 'Sources Inconnues'">
+                <p class="alert warning">Dès que vous aurez installé l'application BioSentiers, il est recommandé que vous <strong>décochiez</strong> ce paramètre.</p>
+              </div>
+              <div class="col-md-4">
+                <h2>2 - Télécharger le fichier d'installation</h2>
+                <p>Pour télécharger l'installeur sur votre téléphone, nous vous conseillons d'accéder au site directement depuis
+                  l'appareil, puis de cliquer sur le bouton ci-dessous.</p>
+                <p class="alert warning">Si vous téléchargez l'installeur depuis un ordinateur, vous devrez le transférer manuellement vers votre
+                  appareil.
+                </p>
+                <a class="btn btn-bs dl" href="https://github.com/MediaComem/biosentiers/releases/download/v1.0.0-beta/biosentiers-debug.apk">
+                  <p>Télécharger BioSentiers</p>
+                  <p><small>Version Bêta - <strong>~104 Mo</strong></small></p>
+                </a>
+                <p>Une fois le téléchargement terminé, ouvrez le fichier pour lancer l'installation.</p>
+                <div class="alert info">BioSentiers nécessite l'accès aux ressources suivantes :
+                  <ul>
+                    <li>Appareil photo</li>
+                    <li>Géolocalisation</li>
+                  </ul>
+                </div>
+                <p class="alert">Vous pouvez sans souci supprimer le fichier <code>biosentiers-debug.apk</code> dès que l'application est
+                  installée.
+                </p>
+              </div>
+              <div class="col-md-4">
+                <h2>3 - Scanner le QR Code d'initialisation</h2>
+                <p>Lorsque vous démarrez l'application, elle vous propose de scanner un QR Code afin d'initialiser une sortie.</p>
+                <p class="alert">BioSentiers dispose de son propre lecteur de QR Code.</p>
+                <p>BioSentiers fonctionne avec un système de sorties, qui prennent place sur une ou plusieurs zones du sentier
+                  d'Yverdon-les-Bains.
+                </p>
+                <p class="alert info">Le QR Code suivant va créer une sortie comprenant toutes les zones du sentier.</p>
+                <p id="qr-code">
+                  <img src="./img/qr-code.png" alt="QR Code BioSentiers" title="QR Code BioSentiers">
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <div id="qr-code-lg" class="hidden">
+    <img src="./img/qr-code.png" alt="QR Code BioSentiers" title="QR Code BioSentiers">
+  </div>
 
   <!-- Contact Section -->
   <section id="contacts">

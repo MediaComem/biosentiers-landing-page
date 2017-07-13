@@ -1,7 +1,7 @@
 $(function() {
 
   var trailId = '8c8c2474-4375-4121-95d3-763f381717df';
-  var map, selectedZone, trailBounds;
+  var map, selectedZone, trail, trailBounds;
   var $zoneSheet = $("#zone-sheet");
   var $zoneBackdrop = $("div.backdrop", $("#map"));
 
@@ -63,7 +63,9 @@ $(function() {
 
   function loadData() {
     return $.when(
-      $.ajax('/api/trails/' + trailId + '?include=geometry'),
+      $.ajax({
+        url: '/api/trails/' + trailId + '?include=geometry'
+      }),
       $.ajax({
         url: '/api/trails/' + trailId + '/zones',
         dataType: 'json'
@@ -72,6 +74,7 @@ $(function() {
   }
 
   function displayData(trailResult, zonesResult) {
+    trail = trailResult[0];
     return $.when([
       displayPath(trailResult[0]),
       displayZones(zonesResult[0], trailResult[0])
@@ -203,15 +206,14 @@ $(function() {
   }
 
   function onZoneSelected(feature) {
-    console.log(feature);
     $zoneBackdrop.addClass('active');
-    $("h2", $zoneSheet).text(feature.properties.keyword);
+    $("h2", $zoneSheet).text(feature.properties.type);
     $("p", $zoneSheet).text(feature.properties.description);
-    $("span.zone-number", $zoneSheet).text(feature.properties.position);
+    $("span.zone-number", $zoneSheet).text(getZonePosition(feature.properties, trail));
   }
 
   function onZoneDeselected() {
-    console.log('No zone selected');
+    // nothing to do
   }
 
   function recordsToFeatureCollection(records) {

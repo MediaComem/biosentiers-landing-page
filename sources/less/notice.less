@@ -1,3 +1,5 @@
+@notice-color: @bs-navy;
+
 .notice {
   padding: 10px;
   font-size: .8em;
@@ -5,13 +7,20 @@
   position: relative;
   background-color: #eaeaea;
   margin-bottom: 15px;
-  left: -35px;
-  margin-right: -35px;
   line-height: 20px;
   display: flex;
   align-items: center;
+  left: -35px;
+  margin-right: -35px;
+
+  @media(max-width: @sm-max) {
+    left: 0;
+    margin-right: -10px;
+    margin-left: -10px;
+  }
 
   span.info-icon {
+    color: @notice-color;
     flex: 0 0 20px;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
@@ -19,11 +28,19 @@
     .heading-font;
     font-size: 15px;
     height: 20px;
-    border: 2px solid black;
+    border: 2px solid @notice-color;
     border-radius: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 10px;
+  }
+
+  span {
+    color: @notice-color;
+  }
+
+  ul {
+    margin-bottom: 0;
   }
 }

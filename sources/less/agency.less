@@ -8,7 +8,7 @@
 @import "contact.less";
 @import "footer.less";
 @import "partners.less";
-@import "alert.less";
+@import "notice.less";
 @import "buttons.less";
 
 // Global Components
@@ -30,12 +30,6 @@
 .panel-group{
   margin-bottom:0 !important;
   height: 800px;
-}
-
-.content img {
-  width: 100%;
-  background-color: aqua;
-  float: right !important;
 }
 
 .panel-body {
@@ -187,4 +181,30 @@ body {
 section {
   .full-section;
   .text-font;
+}
+
+.numbered {
+  display: flex;
+  align-items: center;
+
+  span:first-child {
+    flex: 0 0 50px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 50px;
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-transition: background-color 0.2s;
+    -moz-transition: background-color 0.2s;
+    -o-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+
+    @media(max-width: @xs-max) {
+      flex-basis: 30px;
+      height: 30px;
+      border-width: 1px;
+    }
+  }
 }

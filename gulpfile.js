@@ -128,7 +128,7 @@ gulp.task('prod', ['build'], function() {
 
 function createProxy() {
 
-  var proxyOptions = url.parse('https://biosentiers.heig-vd.ch/api');
+  var proxyOptions = url.parse(process.env.BACKEND_URL || config.backendUrl || 'https://biosentiers.heig-vd.ch/api');
   proxyOptions.route = '/api';
 
   return proxy(proxyOptions);
